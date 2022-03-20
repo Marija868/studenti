@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma</title>
+    <style>
+
+body {
+    margin: 0 auto;
+    width: 850px;
+    background-color: rgb(10, 13, 48);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#container{
+    background-color: #5d84cc;
+    padding: 25px;
+    border: 8px double rgb(10, 13, 48);
+    border-radius: 10px;
+
+}
+
+form{
+    margin-top: 20px;
+  padding: 5px 25px 5px 5px;
+  border: 1px solid rgb(10, 13, 48);
+  border-radius: 10px;
+  background-color: white;
+  padding-bottom: 30px;
+}
+
+h1{
+text-align: center;
+}
+
+label{
+  font-size: 14px;
+}
+
+input, select {
+  border: 1px solid rgb(10, 13, 48);
+  padding: 8px;
+  width: 100%;
+  border-radius: 10px;
+  display: inline-block;
+  background-color: #0a0d3033;
+  color: rgb(10, 13, 48);
+}
+
+#add-btn {
+  padding: 8px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgb(10, 13, 48);
+  font-size: 17px;
+}
+
+#add-btn:hover {
+  color: rgb(93, 132, 204);
+}
+
+.edit-btn, .del-btn, .end-edit-btn, .back-btn{
+  width: 100px;
+  padding: 8px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgb(10, 13, 48);
+  font-size: 17px;
+  border: 1px solid rgb(10, 13, 48);
+  border-radius: 10px;
+}
+
+.edit-btn:hover, .del-btn:hover, .end-edit-btn:hover, .back-btn:hover {
+  color: rgb(93, 132, 204);
+}
+
+.edit-btn{
+  margin-left: 50px;
+  
+}
+
+.del-btn{
+  margin-right: 50px;
+ float: right;
+}
+
+#student-info{
+  padding-top: 40px;
+  clear: both;
+}
+
+#btns{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+p{
+  padding: 5px;
+}
+    </style>
+</head>
+<body>
+
+    <div id="container">
+      <button class="back-btn" onclick="backBtn()">Back</button>
+      <h1>Student Info</h1>
+<div>
+
+<form action="#" method="post" id="form">
+
+    <label for="studentID"> PK Student ID </label>
+    <input type="text" name="studentID" id="studentID">
+
+    <label for="indexNum"> Broj indeksa </label>
+    <input type="number" name="indexNum" id="indexNum">
+
+    <label for="firstName"> Ime </label>
+    <input type="text" name="firstName" id="firstName">
+
+
+    <label for="lastName"> Prezime </label>
+    <input type="text" name="lastName" id="lastName">
+
+    <label for="year"> Godina </label>
+    <input type="number" name="year" id="year">
+
+  <label for="status"> Status </label>
+    <select id="status" name="status">
+      <option value="" disabled selected>...</option>
+        <option value="Redovan">Redovan</option>
+        <option value="Neredovan">Neredovan</option>
+    </select>
+
+    <br><br>
+    <input type="button" onclick="students()" id="add-btn" value="Add">
+  </div>
+</form>
+
+<div id="btns">
+  <button class ="edit-btn" onclick="editContent()" id="editContent">Edit</button>
+  <button class="del-btn" onclick="clearContent()">Delete</button>
+  <button class="end-edit-btn" type="submit" id="endEdit" onclick="saveContent()">Save</button>
+</div>
+
+<div  id="studentInfo">
+  <p id="p1" ></p>
+  <p id="p2"></p>
+  <p id="p3"></p>
+  <p id="p4"> </p>
+  <p id="p5"></p>
+  <p id="p6"> </p>
+
+</div>
+</div>
+<script>
+
+  function students() {
+
+  var pkStudentId = document.getElementById("studentID").value;
+  var indexNumber = document.getElementById("indexNum").value;
+  var fName = document.getElementById("firstName").value;
+  var sName = document.getElementById("lastName").value;
+  var YeaR = document.getElementById("year").value;
+  var sTATUs = document.getElementById("status").value;
+  
+  document.getElementById("p1").innerHTML = "PK STUDENT ID: " + pkStudentId;
+  document.getElementById("p2").innerHTML = "BROJ INDEKSA: " + indexNumber;
+  document.getElementById("p3").innerHTML = "IME: " + fName;
+  document.getElementById("p4").innerHTML = "PREZIME: " + sName;
+  document.getElementById("p5").innerHTML = "GODINA: " + YeaR;
+  document.getElementById("p6").innerHTML = "STATUS: " + sTATUs;
+
+  localStorage.setItem("studentID", pkStudentId);
+  localStorage.setItem("indexNum", indexNumber);
+  localStorage.setItem("firstName", fName);
+  localStorage.setItem("lastName", sName);
+  localStorage.setItem("year", YeaR);
+  localStorage.setItem("status", sTATUs);
+
+if (indexNumber === "") {
+  document.getElementById("indexNum").style.border = "1px solid red";
+  document.getElementById("p1").innerHTML = "";
+  document.getElementById("p2").innerHTML = "";
+  document.getElementById("p3").innerHTML = "";
+  document.getElementById("p4").innerHTML = "";
+  document.getElementById("p5").innerHTML = "";
+  document.getElementById("p6").innerHTML = "";
+  } else {
+    document.getElementById("indexNum").style.border = "1px solid";
+    document.getElementById("p1").innerHTML = "PK STUDENT ID: " + pkStudentId;
+    document.getElementById("p2").innerHTML = "BROJ INDEKSA: " + indexNumber;
+    document.getElementById("p3").innerHTML = "IME: " + fName;
+    document.getElementById("p4").innerHTML = "PREZIME: " + sName;
+    document.getElementById("p5").innerHTML = "GODINA: " + YeaR;
+    document.getElementById("p6").innerHTML = "STATUS: " + sTATUs;
+      }
+
+if (sTATUs === "") {
+  document.getElementById("status").style.border = " 1px solid red";
+  document.getElementById("p1").innerHTML = "";
+  document.getElementById("p2").innerHTML = "";
+  document.getElementById("p3").innerHTML = "";
+  document.getElementById("p4").innerHTML = "";
+  document.getElementById("p5").innerHTML = "";
+  document.getElementById("p6").innerHTML = "";
+  } else {
+    document.getElementById("status").style.border = "1px solid";
+    document.getElementById("p1").innerHTML = "PK STUDENT ID: " + pkStudentId;
+    document.getElementById("p2").innerHTML = "BROJ INDEKSA: " + indexNumber;
+    document.getElementById("p3").innerHTML = "IME: " + fName;
+    document.getElementById("p4").innerHTML = "PREZIME: " + sName;
+    document.getElementById("p5").innerHTML = "GODINA: " + YeaR;
+    document.getElementById("p6").innerHTML = "STATUS: " + sTATUs;
+  }
+      e.defaultPrevent();
+      document.getElementById("form").reset();
+}
+
+
+
+function clearContent(){
+  if (confirm("Are you sure you want to delete?")){ 
+  document.getElementById("p1").innerHTML = "";
+  document.getElementById("p2").innerHTML = "";
+  document.getElementById("p3").innerHTML = "";
+  document.getElementById("p4").innerHTML = "";
+  document.getElementById("p5").innerHTML = "";
+  document.getElementById("p6").innerHTML = "";
+  document.getElementById("form").reset();
+  localStorage.clear();
+  } else{
+      return false;
+  } 
+}
+
+
+
+var info = document.getElementById("studentInfo");
+var editBtn = document.getElementById("editContent");
+var doneBtn = document.getElementById("endEdit");
+
+editBtn.addEventListener("click", function() {
+  info.contentEditable = true;
+  info.style.backgroundColor = "white";
+  info.style.border = "1px solid";
+} );
+
+doneBtn.addEventListener("click", function() {
+  info.contentEditable = false;
+  info.style.backgroundColor = "#5d84cc";
+  info.style.border = "none";
+} ); 
+
+
+function backBtn() {
+ window.open("create.html", "_self")       
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studenti</title>
+
+
+    <style>
+
+body{
+    margin: 0 auto;
+    width: 400px;
+    background-color: rgb(255, 246, 246);
+}
+
+input {
+    display: block;
+    margin: 0 auto;
+    align-items:  center;
+    width: 180px;
+    padding: 8px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    color: rgb(10, 13, 48);
+    font-size: 17px;
+    border: 1px solid rgb(10, 13, 48);
+    border-radius: 10px;
+}
+
+h1{
+    text-align: center;
+}
+
+#create{
+padding: 8px 15px;
+font-weight: bold;
+cursor: pointer;
+color: grey;
+font-size: 15px;
+}
+
+#create:hover {
+  color: rgb(93, 132, 204);
+}
+    </style>
+</head>
+<body>
+
+    <h1>Studenti</h1>
+    <br><br>
+    <div>
+        <input id="create" type="button" onclick="location.href = 'main.html'" value="Create"/>
+    </div>
+        
+    <script>
+document.getElementById("create").onclick = function () {
+        location.href = "main.html";
+    };
+    </script>
+</body>
+</html>

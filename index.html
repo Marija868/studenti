@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prijava</title>
+
+
+    <style>
+
+body{
+  margin: 0 auto;
+    
+    width: 400px;
+    background-color: rgb(255, 246, 246);
+}
+
+div{
+    position: absolute;
+  margin-top: 80px;
+  
+  
+}
+input {
+  border: 1px solid rgb(100, 95, 95);
+padding: 4px;
+width: 100%;
+border-radius: 10px;
+  display: inline-block;
+  background-color: rgb(255, 255, 255);
+
+}
+
+h1{
+    text-align: center;
+}
+form{
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+#log, #cancel {
+    padding: 8px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  color: grey;
+  font-size: 15px;
+}
+
+#log:hover, #cancel:hover {
+  color: rgb(58, 58, 58);
+}
+    </style>
+</head>
+<body>
+
+
+<div>
+    <h1>Prijava</h1>
+    <form name="login">
+    <p>Username<input type="text" name="userid"/></p>    
+    
+     <p>Password<input type="password" name="pass"/></p>   
+        <br>
+        <input id="log" type="button" onclick="check(form)" value="Login"/>
+        <br>
+        <br>
+        <input id="cancel" type="reset" value="Cancel"/>
+    </form>
+
+</div>
+
+
+
+
+    <script>
+        function check(form) { 
+            if(form.userid.value == "" && form.pass.value == "") {
+                window.open("create.html", "_self")
+            }
+            else {
+                alert("Invalid Password or Username")
+            }
+        }
+    </script>
+</body>
+</html>
